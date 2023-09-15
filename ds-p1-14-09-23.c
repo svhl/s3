@@ -8,18 +8,18 @@ struct Student
 {
 	int rno;
 	char name[50];
-	float m[5];
+	float marks[5];
 	float total;
 };
 
 void main()
 {
-	int n;
+	int n, i, j;
 	printf("Enter no. of students:\n");
 	scanf("%d", &n);
 	struct Student s[n];
 
-	for(int i = 0; i < n; i++)
+	for(i = 0; i < n; i++)
 	{
 		printf("\nPerson %d:\n\n", i+1);
 		printf("Enter roll no.:\n");
@@ -28,30 +28,30 @@ void main()
 		scanf("%s", s[i].name);
 		s[i].total = 0;
 
-		for(int j = 0; j < 5; j++)
+		for(j = 0; j < 5; j++)
 		{
 			printf("Enter marks of subject %d:\n", j+1);
-			scanf("%f", &s[i].m[j]);
-			s[i].total += s[i].m[j];
+			scanf("%f", &s[i].marks[j]);
+			s[i].total += s[i].marks[j];
 		}
 	}
 
-	for(int i = 0; i < n; i++)
+	for(i = 0; i < n; i++)
 	{
 		printf("\nPerson %d:\n\n", i+1);
 		printf("Roll no.: %d\n", s[i].rno);
 		printf("Name: %s\n", s[i].name);
 
-		for(int j = 0; j < 5; j++)
+		for(j = 0; j < 5; j++)
 		{
 			printf("Marks of subject %d:\n", j+1);
-			printf("%f\n", s[i].m[j]);
+			printf("%f\n", s[i].marks[j]);
 		}
 	}
 
-	for(int i = 0; i < n; i++)
+	for(i = 0; i < n; i++)
 	{
-		for(int j = 0; j < n-1-i; j++)
+		for(j = 0; j < n-1-i; j++)
 		{
 			if(s[j].total < s[j+1].total)
 			{
@@ -61,7 +61,8 @@ void main()
 			}
 		}
 	}
-	for(int i = 0; i < n; i++)
+	
+	for(i = 0; i < n; i++)
 	{
 		printf("\nRank %d\n", i+1);
 		printf("Name: %s\n", s[i].name);
