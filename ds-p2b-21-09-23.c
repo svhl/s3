@@ -2,17 +2,17 @@
 
 void main()
 {
-	int a[5][3] = {{5,5,2},{0,0,1},{1,3,2},{1,2,3},{4,1,3}};
+	int a[6][3] = {{5,5,6},{0,0,1},{1,3,2},{1,2,3},{4,1,3},{4,2,5}};
 	printf("Original sparse matrix:\n\n");
 
-	for(int i = 0; i < 5; i++)
+	for(int i = 0; i < 6; i++)
 	{
 		for(int j = 0; j < 3; j++)
 			printf("%d\t", a[i][j]);
 		printf("\n");
 	}
 
-	int b[5][3];
+	int b[6][3];
 	int m, n, t;
 	m = a[0][0];
 	n = a[0][1];
@@ -27,7 +27,7 @@ void main()
 
 	for(int col = 0; col < n; col++)
 	{
-		for(int p = 1; p <= t+1; p++)
+		for(int p = 0; p < t; p++)
 		{
 			if(a[p][1] == col)
 			{
@@ -41,7 +41,7 @@ void main()
 
 	printf("\nTransposed sparse matrix:\n\n");
 
-	for(int i = 0; i < 5; i++)
+	for(int i = 0; i < 6; i++)
 	{
 		for(int j = 0; j < 3; j++)
 			printf("%d\t", b[i][j]);
