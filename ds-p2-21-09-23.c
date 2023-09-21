@@ -28,8 +28,17 @@ void main()
 			printf("Enter row %d of sparse matrix 1:\n", i);
 			scanf("%d%d%d", &a[i][0], &a[i][1], &a[i][2]);
 		}
+		
+		printf("\nMatrix 1:\n\n");
 
-		printf("Enter no. of non-zero elements in matrix 2:\n");
+		for(i = 0; i <= a[0][2]; i++)
+		{
+			for(j = 0; j < 3; j++)
+				printf("%d\t", a[i][j]);
+			printf("\n");
+		}
+
+		printf("\nEnter no. of non-zero elements in matrix 2:\n");
 		scanf("%d", &b[0][2]);
 		printf("Enter no. of rows of matrix 2:\n");
 		scanf("%d", &b[0][0]);
@@ -47,6 +56,15 @@ void main()
 		{
 			printf("\n Can't add because unequal no. of rows & columns\n");
 			return;
+		}
+
+		printf("\nMatrix 2:\n\n");
+
+		for(i = 0; i <= b[0][2]; i++)
+		{
+			for(j = 0; j < 3; j++)
+				printf("%d\t", b[i][j]);
+			printf("\n");
 		}
 
 		p = q = r = 1;
@@ -95,7 +113,7 @@ void main()
 			{
 				c[r][0] = a[p][0];
 				c[r][1] = a[p][1];
-				c[r][2] = a[p][2] + b[p][2];
+				c[r][2] = a[p][2] + b[q][2];
 				p++;
 				q++;
 				r++;
@@ -122,24 +140,6 @@ void main()
 		
 		// r is no. of rows in sparse matrix sum
 		c[0][2] = r - 1;
-
-		printf("\nMatrix 1:\n\n");
-
-		for(i = 0; i <= a[0][2]; i++)
-		{
-			for(j = 0; j < 3; j++)
-				printf("%d\t", a[i][j]);
-			printf("\n");
-		}
-
-		printf("\nMatrix 2:\n\n");
-
-		for(i = 0; i <= b[0][2]; i++)
-		{
-			for(j = 0; j < 3; j++)
-				printf("%d\t", b[i][j]);
-			printf("\n");
-		}
 
 		printf("\nSum:\n\n");
 
