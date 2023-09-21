@@ -1,6 +1,6 @@
 # svhl/s3
 
-If you're gonna turn in these programs, probably make some changes.
+Make changes to comments, variables, etc. if you're gonna use these.
 
 ### Related repos
 
