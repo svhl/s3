@@ -11,8 +11,14 @@ public class grade
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter score:");
 		score = sc.nextFloat();
-
-		if(score >= 90)
+		
+		if(score > 100 || score < 0)
+		{
+			System.out.println("Enter score between 0-100");
+			return;
+		}
+		
+		else if(score >= 90)
 		{
 			grade = 'A';
 		}

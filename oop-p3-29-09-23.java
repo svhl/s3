@@ -7,18 +7,18 @@ class calculator
 {
 	public static void main(String[] args)
 	{
-		boolean cont = true;
-		float ch, a = 0, b = 0;
+		int ch;
+		float a = 0, b = 0;
 		Scanner sc = new Scanner(System.in);
 
-		while(cont == true)
+		do
 		{
 			System.out.println("Menu");
 			System.out.println("1. Addition");
 			System.out.println("2. Subtraction");
 			System.out.println("3. Multiplication");
 			System.out.println("4. Division");
-			System.out.println("Any other choice to exit");
+			System.out.println("Enter any other value to exit");
 			System.out.println("Enter choice:");
 			ch = sc.nextInt();
 
@@ -29,30 +29,38 @@ class calculator
 				b = sc.nextFloat();
 			}
 
-			if(ch == 1)
+			switch(ch)
 			{
-				System.out.println("Sum: " + (a + b) + "\n");
-			}
+				case 1:
+				{
+					System.out.println("Sum: " + (a + b) + "\n");
+					break;
+				}
 
-			else if(ch == 2)
-			{
-				System.out.println("Difference: " + (a - b) + "\n");
-			}
+				case 2:
+				{
+					System.out.println("Difference: " + (a - b) + "\n");
+					break;
+				}
 
-			else if(ch == 3)
-			{
-				System.out.println("Product: " + (a * b) + "\n");
-			}
+				case 3:
+				{
+					System.out.println("Product: " + (a * b) + "\n");
+					break;
+				}
+				
+				case 4:
+				{
+					System.out.println("Quotient: " + (a / b) + "\n");
+					break;
+				}
 
-			else if(ch == 4)
-			{
-				System.out.println("Quotient: " + (a / b) + "\n");
-			}
-
-			else
-			{
-				cont = false;
+				default:
+				{
+					return;
+				}
 			}
 		}
+		while(true);
 	}
 }

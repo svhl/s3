@@ -1,7 +1,7 @@
 // write a java program that takes an integer as input & reverses digits using for loop
 
 import java.util.Scanner;
-public class Reverse
+public class reverse
 {
 	public static void main(String[] args)
 	{
@@ -12,8 +12,7 @@ public class Reverse
 
 		for(; n1 != 0; n1 /= 10)
 		{
-			int d = n1 % 10;
-			n2 = n2 * 10 + d;
+			n2 = n2 * 10 + (n1 % 10);
 		}
 
 		System.out.println("Reversed no.: " + n2);
