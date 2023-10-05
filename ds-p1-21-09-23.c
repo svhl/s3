@@ -41,7 +41,7 @@ void main()
 					printf("Enter exponent of element:\n");
 					
 				else
-					printf("Enter coefficient of element x^%d:\n", i-1);
+					printf("Enter coefficient of element x^%d:\n", b[i-1]);
 					
 				scanf("%d", &b[i]);
 			}
