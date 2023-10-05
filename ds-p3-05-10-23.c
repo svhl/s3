@@ -43,6 +43,8 @@ void main()
 
 			else
 			{
+				item = stack[top];
+				printf("\nPopped element %d\n", item);
 				top--;
 			}
 		}

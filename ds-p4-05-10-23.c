@@ -27,7 +27,7 @@ void main()
 			else
 			{
 				rear++;
-				printf("Enter element to enqueue:\n");
+				printf("\nEnter element to enqueue:\n");
 				scanf("%d", &item);
 				queue[rear] = item;
 			}
@@ -43,6 +43,8 @@ void main()
 			else
 			{
 				front++;
+				item = queue[front];
+				printf("\nDequeued element %d\n", item);
 			}
 		}
 
