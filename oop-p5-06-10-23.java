@@ -11,6 +11,19 @@ class matrix
 		r1 = sc.nextInt();
 		System.out.println("Enter no. of columns of matrix 1:");
 		c1 = sc.nextInt();
+		System.out.println("\nEnter no. of rows of matrix 2:");
+		r2 = sc.nextInt();
+		System.out.println("Enter no. of columns of matrix 2:");
+		c2 = sc.nextInt();
+
+		if(r1 != r2 || c1 != c2)
+		{
+			System.out.println("\nCan't add or transpose sum because rows & columns aren't same");
+			return;
+		}
+		
+		System.out.println("\nMatrix 1:\n");
+
 		int a[][] = new int[r1][c1];
 
 		for(int i = 0; i < r1; i++)
@@ -22,16 +35,7 @@ class matrix
 			}
 		}
 
-		System.out.println("\nEnter no. of rows of matrix 2:");
-		r2 = sc.nextInt();
-		System.out.println("Enter no. of columns of matrix 2:");
-		c2 = sc.nextInt();
-
-		if(r1 != r2 || c1 != c2)
-		{
-			System.out.println("\nCan't add or transpose sum because rows & columns aren't same");
-			return;
-		}
+		System.out.println("\nMatrix 2:\n");
 
 		int b[][] = new int[r2][c2];
 
@@ -78,7 +82,6 @@ class matrix
 			for(int j = 0; j < c1; j++)
 			{
 				s[i][j] = a[i][j] + b[i][j];
-				t[j][i] = s[i][j];
 				System.out.print(s[i][j] + "\t");
 			}
 
@@ -87,9 +90,9 @@ class matrix
 
 		System.out.println("\nTranspose:\n");
 
-		for(int i = 0; i < r1; i++)
+		for(int i = 0; i < c1; i++)
 		{
-			for(int j = 0; j < c1; j++)
+			for(int j = 0; j < r1; j++)
 			{
 				t[i][j] = s[j][i];
 				System.out.print(t[i][j] + "\t");
