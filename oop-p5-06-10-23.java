@@ -39,11 +39,35 @@ class matrix
 
 		if(r1 != r2 || c1 != c2)
 		{
-			System.out.println("Can't add because rows & columns aren't same");
+			System.out.println("\nCan't add or transpose sum because rows & columns aren't same");
 		}
 		
 		else
 		{
+			System.out.println("\nMatrix 1:\n");
+
+			for(int i = 0; i < r1; i++)
+			{
+				for(int j = 0; j < c1; j++)
+				{
+					System.out.print(a[i][j] + "\t");
+				}
+
+				System.out.println();
+			}
+
+			System.out.println("\nMatrix 2:\n");
+
+			for(int i = 0; i < r2; i++)
+			{
+				for(int j = 0; j < c2; j++)
+				{
+					System.out.print(b[i][j] + "\t");
+				}
+
+				System.out.println();
+			}
+
 			int s[][] = new int[r1][c1];
 			int t[][] = new int[c1][r1];
 			
