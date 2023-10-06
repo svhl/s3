@@ -26,6 +26,13 @@ class matrix
 		r2 = sc.nextInt();
 		System.out.println("Enter no. of columns of matrix 2:");
 		c2 = sc.nextInt();
+
+		if(r1 != r2 || c1 != c2)
+		{
+			System.out.println("\nCan't add or transpose sum because rows & columns aren't same");
+			return;
+		}
+
 		int b[][] = new int[r2][c2];
 
 		for(int i = 0; i < r2; i++)
@@ -37,67 +44,58 @@ class matrix
 			}
 		}
 
-		if(r1 != r2 || c1 != c2)
+		System.out.println("\nMatrix 1:\n");
+
+		for(int i = 0; i < r1; i++)
 		{
-			System.out.println("\nCan't add or transpose sum because rows & columns aren't same");
+			for(int j = 0; j < c1; j++)
+			{
+				System.out.print(a[i][j] + "\t");
+			}
+
+			System.out.println();
 		}
-		
-		else
+
+		System.out.println("\nMatrix 2:\n");
+
+		for(int i = 0; i < r2; i++)
 		{
-			System.out.println("\nMatrix 1:\n");
-
-			for(int i = 0; i < r1; i++)
+			for(int j = 0; j < c2; j++)
 			{
-				for(int j = 0; j < c1; j++)
-				{
-					System.out.print(a[i][j] + "\t");
-				}
-
-				System.out.println();
+				System.out.print(b[i][j] + "\t");
 			}
 
-			System.out.println("\nMatrix 2:\n");
+			System.out.println();
+		}
 
-			for(int i = 0; i < r2; i++)
+		int s[][] = new int[r1][c1];
+		int t[][] = new int[c1][r1];
+		
+		System.out.println("\nSum:\n");
+
+		for(int i = 0; i < r1; i++)
+		{
+			for(int j = 0; j < c1; j++)
 			{
-				for(int j = 0; j < c2; j++)
-				{
-					System.out.print(b[i][j] + "\t");
-				}
-
-				System.out.println();
+				s[i][j] = a[i][j] + b[i][j];
+				t[j][i] = s[i][j];
+				System.out.print(s[i][j] + "\t");
 			}
 
-			int s[][] = new int[r1][c1];
-			int t[][] = new int[c1][r1];
-			
-			System.out.println("\nSum:\n");
+			System.out.println();
+		}
 
-			for(int i = 0; i < r1; i++)
+		System.out.println("\nTranspose:\n");
+
+		for(int i = 0; i < r1; i++)
+		{
+			for(int j = 0; j < c1; j++)
 			{
-				for(int j = 0; j < c1; j++)
-				{
-					s[i][j] = a[i][j] + b[i][j];
-					t[j][i] = s[i][j];
-					System.out.print(s[i][j] + "\t");
-				}
-
-				System.out.println();
+				t[i][j] = s[j][i];
+				System.out.print(t[i][j] + "\t");
 			}
 
-			System.out.println("\nTranspose:\n");
-
-			for(int i = 0; i < r1; i++)
-			{
-				for(int j = 0; j < c1; j++)
-				{
-					t[i][j] = s[j][i];
-					System.out.print(t[i][j] + "\t");
-				}
-
-				System.out.println();
-			}
-
+			System.out.println();
 		}
 	}
 }
