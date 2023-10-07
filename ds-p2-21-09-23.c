@@ -6,7 +6,7 @@
 
 void main()
 {
-	int ch, mat[50][50], row, a[50][3], b[50][3], c[3][3], p, q, r, m, n, t, i, j, col;
+	int ch, mat[50][50], row, a[50][3], b[50][3], c[50][3], p, q, r, m, n, t, i, j, col;
 	printf("Menu:\n");
 	printf("1. Sparse matrix addition\n");
 	printf("2. Sparse matrix transpose\n");
