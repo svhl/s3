@@ -1,6 +1,6 @@
 # svhl/s3
 
-Make changes to comments, variables, file names, etc. if you're gonna use these.
+Make changes to comments, file names, etc. if you're gonna use these.
 
 ## How to use
 
@@ -8,7 +8,7 @@ Download the files or Ctrl+C Ctrl+V the code.
 
 ### C:
 
-`cc [filename].c` or `bcc [filename].c`\
+`cc [filename].c` or `gcc [filename].c`\
 `./a.out`
 
 ### Java:
@@ -24,6 +24,4 @@ or
 
 ## Related repos
 
-[karivarkey/DS](https://github.com/karivarkey/DS)\
-[karivarkey/java](https://github.com/karivarkey/java)\
-[karivarkey/clab](https://github.com/karivarkey/clab) (S2)
+Refer starred repos.
