@@ -5,6 +5,7 @@
 #include <math.h>
 
 char stack[50];
+int stackeval[50];
 int top = -1, z1, z2, z;
 
 void push(char x)
@@ -21,9 +22,22 @@ void push(char x)
 	}
 }
 
+void pusheval(int x)
+{
+		top++;
+		stackeval[top] = x;
+}
+
 char pop()
 {
 	char item = stack[top];
+	top--;
+	return item;
+}
+
+int popeval()
+{
+	char item = stackeval[top];
 	top--;
 	return item;
 }
@@ -108,13 +122,13 @@ void main()
 	{
 		if(out[i] >= '0' && out[i] <= '9')
 		{
-			push(out[i]);
+			pusheval((int)(out[i] - 48));
 		}
 
 		else
 		{	
-			z2 = (int)(pop()) - 48;
-			z1 = (int)(pop()) - 48;
+			z2 = popeval();
+			z1 = popeval();
 			
 			if(out[i] == '+')
 			{
@@ -141,9 +155,9 @@ void main()
 				z = pow(z1, z2);
 			}
 			
-			push((char)(z + 48));
+			pusheval(z);
 		}
 	}
 
-	printf("\nResult:\n%c\n", stack[0]);
+	printf("\nResult:\n%d\n", stackeval[top]);
 }
