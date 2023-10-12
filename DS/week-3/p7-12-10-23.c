@@ -1,7 +1,11 @@
+// write a menu driven c program to convert infix to postifix expression & evaluate using stack
+
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
 
 char stack[50];
-int top = -1;
+int top = -1, z1, z2, z;
 
 void push(char x)
 {
@@ -26,12 +30,7 @@ char pop()
 
 int precedence(char x)
 {
-	if(x == '(' || x == ')')
-	{
-		return 0;
-	}
-	
-	else if(x == '+' || x == '-')
+	if(x == '+' || x == '-')
 	{
 		return 1;
 	}
@@ -45,6 +44,11 @@ int precedence(char x)
 	{
 		return 3;
 	}
+
+	else
+	{
+		return 0;
+	}
 }
 
 void main()
@@ -54,7 +58,7 @@ void main()
 	gets(x);
 	char out[50];
 	int i, j = 0;
-	for(i = 0; x[i] != '\0'; i++)
+	for(i = 0; i < strlen(x); i++)
 	{
 		if(x[i] >= '0' && x[i] <= '9')
 		{
@@ -90,18 +94,56 @@ void main()
 		}
 	}
 	
-	while(stack[top] == '+' || stack[top] == '-' || stack[top] == '*' || stack[top] == '/' || stack[top] == '^')
+	while(top >= 0)
 	{
 		out[j] = pop();
 		j++;
 	}
 	
-	printf("\nPostfixed expression:\n");
+	printf("\nPostfixed expression:\n%s\n", out);
 
-	for(i = 0; i < j; i++)
+	top = -1;
+
+	for(i = 0; i < strlen(out); i++)
 	{
-		printf("%c", out[i]);
+		if(out[i] >= '0' && out[i] <= '9')
+		{
+			push(out[i]);
+		}
+
+		else
+		{	
+			z2 = (int)(pop()) - 48;
+			z1 = (int)(pop()) - 48;
+			
+			if(out[i] == '+')
+			{
+				z = z1 + z2;
+			}
+
+			else if(out[i] == '-')
+			{
+				z = z1 - z2;
+			}
+
+			else if(out[i] == '*')
+			{
+				z = z1 * z2;
+			}
+
+			else if(out[i] == '/')
+			{
+				z = z1 / z2;
+			}
+
+			else
+			{
+				z = pow(z1, z2);
+			}
+			
+			push((char)(z + 48));
+		}
 	}
-	
-	printf("\n");
-}	
+
+	printf("\nResult:\n%c\n", stack[0]);
+}
