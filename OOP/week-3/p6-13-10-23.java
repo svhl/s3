@@ -1,3 +1,8 @@
+// create a java class for bank account
+// include attributes like account no., account holder's name, balance
+// implement methods to display money, withdraw money, check balance, display account details
+// create 2 objects & initialize their parameters using different types of constructors
+
 import java.util.Scanner;
 class Bank
 {
@@ -29,8 +34,16 @@ class Bank
 	
 	void Withdraw(double amt)
 	{
-		bal -= amt;
-		System.out.println("Withdrew " + amt);
+		if(amt > bal)
+		{
+			System.out.println("Insufficient balance");
+		}
+
+		else
+		{
+			bal -= amt;
+			System.out.println("Withdrew " + amt);
+		}
 	}
 	
 	void Balance()

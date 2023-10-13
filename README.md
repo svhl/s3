@@ -13,10 +13,8 @@ Download the files or Ctrl+C Ctrl+V the code.
 
 ### Java:
 
-**[filename] needs to be same as the name of the main class.**
-
 `javac [filename].java`\
-`java [filename]`
+`java [main_class_name]`
 
 or
 
