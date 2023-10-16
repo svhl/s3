@@ -98,6 +98,12 @@ void main()
 		
 		else
 		{
+			if(x[i] == '^' && stack[top] == '^')
+			{
+				push(x[i]);
+				continue;
+			}
+
 			while(precedence(x[i]) <= precedence(stack[top]))
 			{
 				out[j] = pop();
