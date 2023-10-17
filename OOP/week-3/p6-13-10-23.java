@@ -12,7 +12,6 @@ class Bank
 	
 	Bank()
 	{
-		System.out.println("\nDefault constructor\n");
 		anum = 123456789;
 		name = "Name";
 		bal = 10;
@@ -20,7 +19,6 @@ class Bank
 	
 	Bank(int a, String n, double b)
 	{
-		System.out.println("\nParameterized constructor\n");
 		anum = a;
 		name = n;
 		bal = b;
@@ -36,7 +34,7 @@ class Bank
 	{
 		if(amt > bal)
 		{
-			System.out.println("Insufficient balance");
+			System.out.println("Can't withdraw because insufficient balance");
 		}
 
 		else
@@ -55,7 +53,7 @@ class Bank
 	{
 		System.out.println("Account no.: " + anum);
 		System.out.println("Name: " + name);
-		System.out.println("Balance: " + bal + "\n");
+		System.out.println("Balance: " + bal + "");
 	}
 }
 
@@ -66,6 +64,18 @@ class BankDemo
 		int anum;
 		String name;
 		double bal, amt;
+		
+		System.out.println("Default constructor\n");
+
+		Bank b1 = new Bank();
+		b1.Deposit(10000);
+		b1.Withdraw(6500);
+		b1.Balance();
+		System.out.println();
+		b1.Display();
+
+		System.out.println("\nParameterized constructor\n");
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter account no.:");
 		anum = sc.nextInt();
@@ -74,21 +84,16 @@ class BankDemo
 		name = sc.nextLine();
 		System.out.println("Enter balance:");
 		bal = sc.nextDouble();
-		
-		Bank b1 = new Bank(anum, name, bal);
-		b1.Display();
-		System.out.println("Enter amount to deposit:");
+
+		Bank b2 = new Bank(anum, name, bal);
+		System.out.println("\nEnter amount to deposit:");
 		amt = sc.nextDouble();
-		b1.Deposit(amt);
-		System.out.println("Enter amount to withdraw:");
+		b2.Deposit(amt);
+		System.out.println("\nEnter amount to withdraw:");
 		amt = sc.nextDouble();
-		b1.Withdraw(amt);
-		b1.Balance();
-		
-		Bank b2 = new Bank();
-		b2.Display();
-		b2.Deposit(10000);
-		b2.Withdraw(6500);
+		b2.Withdraw(amt);
 		b2.Balance();
+		System.out.println();
+		b2.Display();
 	}
 }
