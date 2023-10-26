@@ -71,99 +71,129 @@ void main()
 	printf("Enter an infix expression:\n");
 	gets(x);
 	char out[50];
-	int i, j = 0;
-	for(i = 0; i < strlen(x); i++)
+	int i, j = 0, ch, f = 0;
+	
+	while(1)
 	{
-		if(x[i] >= '0' && x[i] <= '9')
-		{
-			out[j] = x[i];
-			j++;
-		}
+		printf("\nMenu\n");
+		printf("1. Postfix expression\n");
+		printf("2. Evaluate\n");
+		printf("Any other value to exit\n");
+		printf("Enter choice:\n");
+		scanf("%d", &ch);
 		
-		else if(x[i] == '(')
+		if(ch == 1)
 		{
-			push(x[i]);
-		}
-		
-		else if(x[i] == ')')
-		{
-			while(stack[top] != '(')
+			for(i = 0; i < strlen(x); i++)
+			{
+				if(x[i] >= '0' && x[i] <= '9')
+				{
+					out[j] = x[i];
+					j++;
+				}
+				
+				else if(x[i] == '(')
+				{
+					push(x[i]);
+				}
+				
+				else if(x[i] == ')')
+				{
+					while(stack[top] != '(')
+					{
+						out[j] = pop();
+						j++;
+					}
+					
+					pop();
+				}
+				
+				else
+				{
+					if(x[i] == '^' && stack[top] == '^')
+					{
+						push(x[i]);
+						continue;
+					}
+
+					while(precedence(x[i]) <= precedence(stack[top]))
+					{
+						out[j] = pop();
+						j++;
+					}
+					
+					push(x[i]);
+				}
+			}
+			
+			while(top >= 0)
 			{
 				out[j] = pop();
 				j++;
 			}
 			
-			pop();
+			f = 1;
+			printf("\nPostfixed expression:\n%s\n", out);
+		}
+		
+		else if(ch == 2)
+		{
+			if(f == 0)
+			{
+				printf("\nExpression not postfixed\n");
+				return;
+			}
+			
+			top = -1;
+
+			for(i = 0; i < strlen(out); i++)
+			{
+				if(out[i] >= '0' && out[i] <= '9')
+				{
+					pusheval((int)(out[i] - 48));
+				}
+
+				else
+				{	
+					z2 = popeval();
+					z1 = popeval();
+					
+					if(out[i] == '+')
+					{
+						z = z1 + z2;
+					}
+
+					else if(out[i] == '-')
+					{
+						z = z1 - z2;
+					}
+
+					else if(out[i] == '*')
+					{
+						z = z1 * z2;
+					}
+
+					else if(out[i] == '/')
+					{
+						z = z1 / z2;
+					}
+
+					else
+					{
+						z = pow(z1, z2);
+					}
+					
+					pusheval(z);
+				}
+			}
+
+			printf("\nResult:\n%d\n", stackeval[top]);
+			return;
 		}
 		
 		else
 		{
-			if(x[i] == '^' && stack[top] == '^')
-			{
-				push(x[i]);
-				continue;
-			}
-
-			while(precedence(x[i]) <= precedence(stack[top]))
-			{
-				out[j] = pop();
-				j++;
-			}
-			
-			push(x[i]);
+			return;
 		}
 	}
-	
-	while(top >= 0)
-	{
-		out[j] = pop();
-		j++;
-	}
-	
-	printf("\nPostfixed expression:\n%s\n", out);
-
-	top = -1;
-
-	for(i = 0; i < strlen(out); i++)
-	{
-		if(out[i] >= '0' && out[i] <= '9')
-		{
-			pusheval((int)(out[i] - 48));
-		}
-
-		else
-		{	
-			z2 = popeval();
-			z1 = popeval();
-			
-			if(out[i] == '+')
-			{
-				z = z1 + z2;
-			}
-
-			else if(out[i] == '-')
-			{
-				z = z1 - z2;
-			}
-
-			else if(out[i] == '*')
-			{
-				z = z1 * z2;
-			}
-
-			else if(out[i] == '/')
-			{
-				z = z1 / z2;
-			}
-
-			else
-			{
-				z = pow(z1, z2);
-			}
-			
-			pusheval(z);
-		}
-	}
-
-	printf("\nResult:\n%d\n", stackeval[top]);
 }
