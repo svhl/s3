@@ -119,7 +119,7 @@ void delfromend()
 	}
 }
 
-void delafter()
+void delnode()
 {
 	if(head == NULL)
 	{
@@ -128,17 +128,34 @@ void delafter()
 	
 	else
 	{
-		printf("Enter node to delete:\n");
+		printf("\nEnter node to delete:\n");
 		scanf("%d", &item);
 		ptr = head;
 		
-		while(ptr->data != item)
+		if(ptr->data == item)
 		{
-			prev = ptr;
-			ptr = ptr->next;
+			ptr = head;
+			head = ptr->next;
+			printf("\n");
 		}
 		
-		prev->next = ptr->next;
+		else
+		{
+			while(ptr->data != item)
+			{
+				if(ptr->next == NULL)
+				{
+					printf("Node doesn't exist\n\n");
+					return;
+				}
+				
+				prev = ptr;
+				ptr = ptr->next;
+			}
+			
+			prev->next = ptr->next;
+			printf("\n");
+		}
 	}
 }
 
@@ -192,7 +209,7 @@ void main()
 			case 5: delfromend();
 				break;
 			
-			case 6: delafter();
+			case 6: delnode();
 				break;
 
 			case 7: display();
