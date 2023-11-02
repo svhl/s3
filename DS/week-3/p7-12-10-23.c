@@ -138,14 +138,6 @@ void main()
 		
 		else if(ch == 2)
 		{
-			if(f == 0)
-			{
-				printf("\nExpression not postfixed\n");
-				return;
-			}
-			
-			top = -1;
-
 			for(i = 0; i < strlen(out); i++)
 			{
 				if(out[i] >= '0' && out[i] <= '9')
@@ -188,7 +180,6 @@ void main()
 			}
 
 			printf("\nResult:\n%d\n", stackeval[top]);
-			return;
 		}
 		
 		else

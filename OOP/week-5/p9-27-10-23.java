@@ -1,3 +1,5 @@
+// write a program to read numbers in a file & copy the prime numbers among them into another file
+
 import java.util.*;
 import java.io.*;
 
@@ -12,18 +14,6 @@ class Prime
 		iname = sc.next();
 		System.out.println("Enter output filename:");
 		oname = sc.next();
-		FileWriter fwr = new FileWriter(iname); 
-		System.out.println("Enter number of numbers:");
-		n = sc.nextInt();
-		
-		for(int i = 0; i < n; i++)
-		{
-			System.out.println("Enter number " + (i+1) + ":");
-			int num = sc.nextInt();
-			fwr.write(num + "\t");
-		}
-		
-		fwr.close(); 
 		FileReader fin = new FileReader(iname);
 		FileWriter fop = new FileWriter(oname);
 		Scanner fs = new Scanner(fin);
@@ -41,12 +31,13 @@ class Prime
 				}
 			}
 			
-			if(count==0)
+			if(count==0 && num != 0 && num != 1)
 			{
 				fop.write(Integer.toString(num)+"\t");
 			}
 		}
 
+		System.out.println("Done");
 		fin.close();
 		fop.close();
 	}
