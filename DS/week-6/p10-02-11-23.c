@@ -1,3 +1,7 @@
+// write a menu driven program to represent polynomials using a linked list & perform
+// polynomial addition
+// polynomial multiplication
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -13,7 +17,7 @@ int item;
 void main()
 {
 	hp = hq = hr = NULL;
-	int cont = 1, ch, i, n, m;
+	int cont = 1, ch, i, n;
 	
 	while(cont == 1)
 	{
@@ -27,15 +31,16 @@ void main()
 		if(ch == 1)
 		{
 			printf("\nEnter no. of elements in polynomial 1:\n");
-			scanf("%d", &m);
+			scanf("%d", &n);
 			
-			for(i = 0; i < m; i++)
+			for(i = 0; i < n; i++)
 			{
 				p = (struct node*)malloc(sizeof(struct node));
 				printf("\nEnter exponent of element:\n");
 				scanf("%d", &p->exp);
 				printf("Enter coefficient of element x^%d:\n", p->exp);
 				scanf("%d", &p->coeff);
+				p->next = NULL;
 
 				if(hp == NULL)
 				{
@@ -60,6 +65,7 @@ void main()
 				scanf("%d", &q->exp);
 				printf("Enter coefficient of element x^%d:\n", q->exp);
 				scanf("%d", &q->coeff);
+				q->next = NULL;
 
 				if(hq == NULL)
 				{
@@ -88,14 +94,7 @@ void main()
 				{
 					r->exp = ptrp->exp;
 					r->coeff = ptrp->coeff;
-					
-					if(ptrp->next == NULL)
-					{
-						tr->next = r;
-						tr = r;
-						break;
-					}
-					
+					r->next = NULL;
 					ptrp = ptrp->next;
 				}
 				
@@ -103,14 +102,7 @@ void main()
 				{
 					r->exp = ptrq->exp;
 					r->coeff = ptrq->coeff;
-					
-					if(ptrq->next == NULL)
-					{
-						tr->next = r;
-						tr = r;
-						break;
-					}
-					
+					r->next = NULL;
 					ptrq = ptrq->next;
 				}
 				
@@ -118,18 +110,11 @@ void main()
 				{
 						r->exp = ptrp->exp;
 						r->coeff = ptrp->coeff + ptrq->coeff;
-						
-						if(ptrp->next == NULL && ptrq->next == NULL)
-						{
-							tr->next = r;
-							tr = r;
-							break;
-						}
-						
+						r->next = NULL;						
 						ptrp = ptrp->next;
 						ptrq = ptrq->next;
 				}
-				
+
 				if(hr == NULL)
 				{
 					hr = r;
@@ -148,19 +133,10 @@ void main()
 				r = (struct node*)malloc(sizeof(struct node));
 				r->exp = ptrp->exp;
 				r->coeff = ptrp->coeff;
-				
-				if(hr == NULL)
-				{
-					hr = r;
-					tr = r;
-				}
-				
-				else
-				{
-					tr->next = r;
-					tr = r;
-				}
-				
+				r->next = NULL;
+				tr->next = r;
+				tr = r;
+
 				if(ptrp->next == NULL)
 					break;
 				
@@ -172,18 +148,9 @@ void main()
 				r = (struct node*)malloc(sizeof(struct node));
 				r->exp = ptrq->exp;
 				r->coeff = ptrq->coeff;
-				
-				if(hr == NULL)
-				{
-					hr = r;
-					tr = r;
-				}
-				
-				else
-				{
-					tr->next = r;
-					tr = r;
-				}
+				r->next = NULL;
+				tr->next = r;
+				tr = r;
 				
 				if(ptrq->next == NULL)
 					break;
