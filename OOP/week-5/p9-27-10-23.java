@@ -7,7 +7,6 @@ class Prime
 {
 	public static void main(String[] args) throws IOException
 	{
-		int n;
 		String iname, oname;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter input filename:");
