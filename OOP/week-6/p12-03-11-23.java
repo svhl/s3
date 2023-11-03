@@ -1,28 +1,14 @@
 // write a java program to perform linear search on a given array of numbers
 
-import java.util.*;
+import java.util.Scanner;
 
 class LinearSearch
 {
-	public static void main(String[] args)
+	LinearSearch(int a[], int n, int search)
 	{
-		int n, i, j, search;
 		boolean flag = false;
-		int a[] = new int[50];
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter no. of elements:");
-		n = sc.nextInt();
-
-		for(i = 0; i < n; i++)
-		{
-			System.out.println("Enter element at position " + i + ":");
-			a[i] = sc.nextInt();
-		}
-
-		System.out.println("Enter element to search:");
-		search = sc.nextInt();
 		
-		for(i = 0; i < n; i++)
+		for(int i = 0; i < n; i++)
 		{
 			if(a[i] == search)
 			{
@@ -35,5 +21,28 @@ class LinearSearch
 		{
 			System.out.println("Element not found");
 		}
+	}
+}
+
+class LinearSearchDemo
+{
+	public static void main(String[] args)
+	{
+		int n, i, search;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter no. of elements:");
+		n = sc.nextInt();
+		int a[] = new int[n];
+
+		for(i = 0; i < n; i++)
+		{
+			System.out.println("Enter element at position " + i + ":");
+			a[i] = sc.nextInt();
+		}
+
+		System.out.println("Enter element to search:");
+		search = sc.nextInt();
+		
+		LinearSearch l1 = new LinearSearch(a, n, search);
 	}
 }
