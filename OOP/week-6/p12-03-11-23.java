@@ -12,7 +12,7 @@ class LinearSearch
 		{
 			if(a[i] == search)
 			{
-				System.out.println("Element found at position " + i);
+				System.out.println("Element found at position " + (i+1));
 				flag = true;
 			}
 		}
@@ -36,7 +36,7 @@ class LinearSearchDemo
 
 		for(i = 0; i < n; i++)
 		{
-			System.out.println("Enter element at position " + i + ":");
+			System.out.println("Enter element at index " + i + ":");
 			a[i] = sc.nextInt();
 		}
 

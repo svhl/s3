@@ -20,7 +20,7 @@ class Encrypt
 
 		while((i = fin.read()) != -1)
 		{
-			fout.write((char)(i - 2));
+			fout.write((char)(i + 2));
 		}
 
 		System.out.println("Done");
