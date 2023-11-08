@@ -8,7 +8,7 @@ Download the files or Ctrl+C Ctrl+V the code.
 
 ### C:
 
-`cc [filename].c` or `gcc [filename].c`\
+`cc [filename].c` or `cc [filename].c -lm`\
 `./a.out`
 
 ### Java:
