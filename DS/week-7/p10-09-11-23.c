@@ -10,7 +10,6 @@ struct node
 };
 
 struct node *p, *top, *front, *rear, *ptr;
-int item;
 
 void push()
 {
@@ -50,7 +49,7 @@ void display()
 {
 	if(top == NULL)
 	{
-		printf("\nStack is empty\n\n");
+		printf("\nStack is empty");
 	}
 
 	else
@@ -63,19 +62,17 @@ void display()
 			printf("%d\t", ptr->data);
 			ptr = ptr->next;
 		}
-
-		printf("\n\n");
 	}
 	
 	if(front == NULL)
 	{
-		printf("\nQueue is empty\n\n");
+		printf("\n\nQueue is empty\n\n");
 	}
 
 	else
 	{
 		ptr = front;
-		printf("\nQueue:\n");
+		printf("\n\nQueue:\n");
 
 		while(ptr != NULL)
 		{
