@@ -7,6 +7,8 @@
 // delete a specified node
 // display
 
+// too many fixes not in algorithm to add comments
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -63,6 +65,11 @@ void insertatend()
 
 void insertafter()
 {
+	if(head == NULL)
+	{
+		printf("\nList empty\n\n");
+	}
+
 	p = (struct node*)malloc(sizeof(struct node));
 	printf("\nEnter the data:\n");
 	scanf("%d", &p->data);
@@ -74,11 +81,22 @@ void insertafter()
 	
 	while(ptr->data != item)
 	{
+		if(ptr->next == NULL)
+		{
+			printf("Node doesn't exist\n\n");
+			return;
+		}
+
 		ptr = ptr->next;
-	}
-	
+	}	
+
 	p->next = ptr->next;
 	ptr->next = p;
+
+	if(ptr == tail)
+	{
+		tail = p;
+	}
 }
 
 void delfrombegin()
@@ -131,12 +149,11 @@ void delnode()
 		printf("\nEnter node to delete:\n");
 		scanf("%d", &item);
 		ptr = head;
+		printf("\n");
 		
-		if(ptr->data == item)
+		if(ptr->data == item && head == tail)
 		{
-			ptr = head;
-			head = ptr->next;
-			printf("\n");
+			head = NULL;
 		}
 		
 		else
@@ -152,8 +169,20 @@ void delnode()
 				prev = ptr;
 				ptr = ptr->next;
 			}
-			
+
+			if(ptr == head)
+			{
+				head = ptr->next;
+				return;
+			}
+
 			prev->next = ptr->next;
+
+			if(prev->next == NULL)
+			{
+				tail = prev;
+			}
+
 			printf("\n");
 		}
 	}
@@ -167,7 +196,7 @@ void display()
 	while(ptr != NULL)
 	{
 		printf("%d\t", ptr->data);
-		ptr = ptr-> next;
+		ptr = ptr->next;
 	}
 
 	printf("\n\n");
