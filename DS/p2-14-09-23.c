@@ -1,4 +1,5 @@
-//write a program using pointers to search an element in an array using linear search
+// THIS PROGRAM ISN'T PART OF LAB CYCLE
+// write a program using pointers to search an element in an array using linear search
 
 #include <stdio.h>
 

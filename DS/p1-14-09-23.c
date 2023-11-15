@@ -1,3 +1,4 @@
+// THIS PROGRAM ISN'T PART OF LAB CYCLE
 // create a student record consisting of roll no., name & marks of 5 subjects
 // sort on the basis of total marks & display the mark list
 
