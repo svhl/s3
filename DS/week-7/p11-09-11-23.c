@@ -295,7 +295,8 @@ void main()
 		printf("5. Delete from beginning\n");
 		printf("6. Delete from end\n");
 		printf("7. Delete a specified node\n");
-		printf("8. Display\n");
+		printf("8. Display forwards\n");
+		printf("9. Display backwards\n");
 		printf("Any other value to exit\n");
 		printf("Enter choice:\n");
 		scanf("%d", &ch);
@@ -324,6 +325,9 @@ void main()
 				break;
 
 			case 8: display();
+				break;
+
+			case 9: displayrev();
 				break;
 
 			default: return;
