@@ -11,7 +11,7 @@ struct node
 	struct node *next;
 };
 
-struct node *p, *q, *r, *hp, *hq, *hr, *tp, *tq, *tr, *ptrp, *ptrq, *ptrr;
+struct node *p, *q, *r, *hp, *hq, *hr, *tp, *tq, *tr;
 int item;
 
 void main()
@@ -82,39 +82,38 @@ void main()
 		if(ch == 1)
 		{
 			hr = NULL;
-			// use another pointer & assign to head
-			ptrp = hp;
-			ptrq = hq;
+			p = hp;
+			q = hq;
 
 			// DON'T use pointer->next != NULL
 			// use pointer != NULL
-			while (ptrp != NULL && ptrq != NULL)
+			while (p != NULL && q != NULL)
 			{
 				r = (struct node*)malloc(sizeof(struct node));
 				
-				if(ptrp->exp > ptrq->exp)
+				if(p->exp > q->exp)
 				{
-					r->exp = ptrp->exp;
-					r->coeff = ptrp->coeff;
+					r->exp = p->exp;
+					r->coeff = p->coeff;
 					r->next = NULL;
-					ptrp = ptrp->next;
+					p = p->next;
 				}
 				
-				else if(ptrp->exp < ptrq->exp)
+				else if(p->exp < q->exp)
 				{
-					r->exp = ptrq->exp;
-					r->coeff = ptrq->coeff;
+					r->exp = q->exp;
+					r->coeff = q->coeff;
 					r->next = NULL;
-					ptrq = ptrq->next;
+					q = q->next;
 				}
 				
-				else if((ptrp->coeff + ptrq->coeff) != 0)
+				else if((p->coeff + q->coeff) != 0)
 				{
-					r->exp = ptrp->exp;
-					r->coeff = ptrp->coeff + ptrq->coeff;
+					r->exp = p->exp;
+					r->coeff = p->coeff + q->coeff;
 					r->next = NULL;						
-					ptrp = ptrp->next;
-					ptrq = ptrq->next;
+					p = p->next;
+					q = q->next;
 				}
 
 				if(hr == NULL)
@@ -130,34 +129,34 @@ void main()
 				}
 			}
 			
-			while(ptrp != NULL)
+			while(p != NULL)
 			{
 				r = (struct node*)malloc(sizeof(struct node));
-				r->exp = ptrp->exp;
-				r->coeff = ptrp->coeff;
+				r->exp = p->exp;
+				r->coeff = p->coeff;
 				r->next = NULL;
 				tr->next = r;
 				tr = r;
 
-				if(ptrp->next == NULL)
+				if(p->next == NULL)
 					break;
 				
-				ptrp = ptrp->next;
+				p = p->next;
 			}
 			
-			while(ptrq != NULL)
+			while(q != NULL)
 			{
 				r = (struct node*)malloc(sizeof(struct node));
-				r->exp = ptrq->exp;
-				r->coeff = ptrq->coeff;
+				r->exp = q->exp;
+				r->coeff = q->coeff;
 				r->next = NULL;
 				tr->next = r;
 				tr = r;
 				
-				if(ptrq->next == NULL)
+				if(q->next == NULL)
 					break;
 					
-				ptrq = ptrq->next;
+				q = q->next;
 			}
 			
 			printf("\nAdded\n");
@@ -166,18 +165,18 @@ void main()
 		else if(ch == 2)
 		{
 			hr = NULL;
-			ptrp = hp;
+			p = hp;
 
-			while(ptrp != NULL)
+			while(p != NULL)
 			{
-				ptrq = hq;
+				q = hq;
 
-				while(ptrq != NULL)
+				while(q != NULL)
 				{
 					 r = (struct node*)malloc(sizeof(struct node));
-					 r->exp = ptrp->exp + ptrq->exp;
-					 r->coeff = ptrp->coeff * ptrq->coeff;
-					 ptrq = ptrq->next;
+					 r->exp = p->exp + q->exp;
+					 r->coeff = p->coeff * q->coeff;
+					 q = q->next;
 
 					 if(hr == NULL)
 					{
@@ -192,37 +191,37 @@ void main()
 					}
 				}
 
-				ptrp = ptrp->next;
+				p = p->next;
 			}
 		}
 		
 		else if(ch == 3)
 		{
-			ptrp = hp;
+			p = hp;
 			printf("\nPolynomial 1:\n");
 
-			while(ptrp != NULL)
+			while(p != NULL)
 			{
-				printf("%d\t%d\t", ptrp->exp, ptrp->coeff);
-				ptrp = ptrp->next;
+				printf("%d\t%d\t", p->exp, p->coeff);
+				p = p->next;
 			}
 			
-			ptrq = hq;
+			q = hq;
 			printf("\nPolynomial 2:\n");
 
-			while(ptrq != NULL)
+			while(q != NULL)
 			{
-				printf("%d\t%d\t", ptrq->exp, ptrq->coeff);
-				ptrq = ptrq->next;
+				printf("%d\t%d\t", q->exp, q->coeff);
+				q = q->next;
 			}
 			
-			ptrr = hr;
+			r = hr;
 			printf("\nResult:\n");
 
-			while(ptrr != NULL)
+			while(r != NULL)
 			{
-				printf("%d\t%d\t", ptrr->exp, ptrr->coeff);
-				ptrr = ptrr->next;
+				printf("%d\t%d\t", r->exp, r->coeff);
+				r = r->next;
 			}
 
 			printf("\n");
