@@ -17,75 +17,77 @@ int item;
 void main()
 {
 	hp = hq = hr = NULL;
-	int cont = 1, ch, i, n;
+	int cont = 1, ch, i, j, n;
+
+	printf("Enter no. of elements in polynomial 1:\n");
+	scanf("%d", &n);
+
+	for(i = 0; i < n; i++)
+	{
+		p = (struct node*)malloc(sizeof(struct node));
+		printf("\nEnter exponent of element:\n");
+		scanf("%d", &p->exp);
+		printf("Enter coefficient of element x^%d:\n", p->exp);
+		scanf("%d", &p->coeff);
+		p->next = NULL;
+
+		if(hp == NULL)
+		{
+			hp = p;
+			tp = p;
+		}
+
+		else
+		{
+			tp->next = p;
+			tp = p;
+		}
+	}
+
+	printf("\nEnter no. of elements in polynomial 2:\n");
+	scanf("%d", &n);
+
+	for(i = 0; i < n; i++)
+	{
+		q = (struct node*)malloc(sizeof(struct node));
+		printf("\nEnter exponent of element:\n");
+		scanf("%d", &q->exp);
+		printf("Enter coefficient of element x^%d:\n", q->exp);
+		scanf("%d", &q->coeff);
+		q->next = NULL;
+
+		if(hq == NULL)
+		{
+			hq = q;
+			tq = q;
+		}
+
+		else
+		{
+			tq->next = q;
+			tq = q;
+		}
+	}
 	
 	while(cont == 1)
 	{
-		printf("Menu:\n");
-		printf("1. Input polynomials\n");
-		printf("2. Add polynomials\n");
-		printf("3. Display sum\n");
+		printf("\nMenu:\n");
+		printf("1. Add polynomials\n");
+		printf("2. Multiply polynomials\n");
+		printf("3. Display result\n");
+		printf("Any other value to exit\n");
 		printf("Enter choice:\n");
 		scanf("%d", &ch);
 		
 		if(ch == 1)
 		{
-			printf("\nEnter no. of elements in polynomial 1:\n");
-			scanf("%d", &n);
-			
-			for(i = 0; i < n; i++)
-			{
-				p = (struct node*)malloc(sizeof(struct node));
-				printf("\nEnter exponent of element:\n");
-				scanf("%d", &p->exp);
-				printf("Enter coefficient of element x^%d:\n", p->exp);
-				scanf("%d", &p->coeff);
-				p->next = NULL;
-
-				if(hp == NULL)
-				{
-					hp = p;
-					tp = p;
-				}
-				
-				else
-				{
-					tp->next = p;
-					tp = p;
-				}
-			}
-			
-			printf("\nEnter no. of elements in polynomial 2:\n");
-			scanf("%d", &n);
-			
-			for(i = 0; i < n; i++)
-			{
-				q = (struct node*)malloc(sizeof(struct node));
-				printf("\nEnter exponent of element:\n");
-				scanf("%d", &q->exp);
-				printf("Enter coefficient of element x^%d:\n", q->exp);
-				scanf("%d", &q->coeff);
-				q->next = NULL;
-
-				if(hq == NULL)
-				{
-					hq = q;
-					tq = q;
-				}
-				
-				else
-				{
-					tq->next = q;
-					tq = q;
-				}
-			}
-		}
-		
-		else if(ch == 2)
-		{
+			hr = NULL;
+			// use another pointer & assign to head
 			ptrp = hp;
 			ptrq = hq;
-			
+
+			// DON'T use pointer->next != NULL
+			// use pointer != NULL
 			while (ptrp != NULL && ptrq != NULL)
 			{
 				r = (struct node*)malloc(sizeof(struct node));
@@ -108,11 +110,11 @@ void main()
 				
 				else if((ptrp->coeff + ptrq->coeff) != 0)
 				{
-						r->exp = ptrp->exp;
-						r->coeff = ptrp->coeff + ptrq->coeff;
-						r->next = NULL;						
-						ptrp = ptrp->next;
-						ptrq = ptrq->next;
+					r->exp = ptrp->exp;
+					r->coeff = ptrp->coeff + ptrq->coeff;
+					r->next = NULL;						
+					ptrp = ptrp->next;
+					ptrq = ptrq->next;
 				}
 
 				if(hr == NULL)
@@ -160,6 +162,39 @@ void main()
 			
 			printf("\nAdded\n");
 		}
+
+		else if(ch == 2)
+		{
+			hr = NULL;
+			ptrp = hp;
+
+			while(ptrp != NULL)
+			{
+				ptrq = hq;
+
+				while(ptrq != NULL)
+				{
+					 r = (struct node*)malloc(sizeof(struct node));
+					 r->exp = ptrp->exp + ptrq->exp;
+					 r->coeff = ptrp->coeff * ptrq->coeff;
+					 ptrq = ptrq->next;
+
+					 if(hr == NULL)
+					{
+						hr = r;
+						tr = r;
+					}
+
+					else
+					{
+						tr->next = r;
+						tr = r;
+					}
+				}
+
+				ptrp = ptrp->next;
+			}
+		}
 		
 		else if(ch == 3)
 		{
@@ -182,7 +217,7 @@ void main()
 			}
 			
 			ptrr = hr;
-			printf("\nSum:\n");
+			printf("\nResult:\n");
 
 			while(ptrr != NULL)
 			{
@@ -190,11 +225,12 @@ void main()
 				ptrr = ptrr->next;
 			}
 
+			printf("\n");
 		}
 		
 		else
+		{
 			break;
-		
-		printf("\n");
+		}
 	}
 }
