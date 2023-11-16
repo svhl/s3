@@ -184,8 +184,6 @@ void delnode()
 			{
 				tail = prev;
 			}
-
-			printf("\n");
 		}
 
 		free(ptr);
