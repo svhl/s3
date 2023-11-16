@@ -111,6 +111,7 @@ void delfrombegin()
 		ptr = head;
 		head = ptr->next;
 		printf("\n");
+		free(ptr);
 	}
 }
 
@@ -134,6 +135,7 @@ void delfromend()
 		prev->next = NULL;
 		tail = prev;
 		printf("\n");
+		free(ptr);
 	}
 }
 
@@ -185,6 +187,8 @@ void delnode()
 
 			printf("\n");
 		}
+
+		free(ptr);
 	}
 }
 
