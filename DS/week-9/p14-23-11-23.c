@@ -30,6 +30,11 @@ struct node *create()
 	return p;
 }
 
+struct node *delete(struct node *root)
+{
+	return(NULL);
+}
+
 void inorder(struct node *root)
 {
 	if(root == NULL)
@@ -63,23 +68,29 @@ void main()
 	{
 		printf("Menu\n");
 		printf("1. Insertion\n");
-		printf("2. Inorder traversal\n");
-		printf("3. Preorder traversal\n");
+		printf("2. Deletion\n");
+		printf("3. Inorder traversal\n");
+		printf("4. Preorder traversal\n");
 		printf("Any other value to exit\n");
 		printf("Enter choice:\n");
 		scanf("%d", &ch);
+		
 		switch(ch)
 		{
 			case 1: root = create();
 				printf("\n");
 				break;
+				
+			case 2: root = delete(root);
+				printf("\n");
+				break;
 
-			case 2: printf("\n");
+			case 3: printf("\n");
 				inorder(root);
 				printf("\n\n");				
 				break;
 
-			case 3: printf("\n");
+			case 4: printf("\n");
 				preorder(root);
 				printf("\n\n");				
 				break;
