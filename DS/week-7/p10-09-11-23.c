@@ -40,7 +40,9 @@ void pop()
 
 	else
 	{
+		ptr = top;
 		top = top->next;
+		free(ptr);
 		printf("\n");
 	}
 }
@@ -122,6 +124,7 @@ void dequeue()
 	{
 		ptr = front;
 		front = ptr->next;
+		free(ptr);
 	}
 
 	printf("\n");
