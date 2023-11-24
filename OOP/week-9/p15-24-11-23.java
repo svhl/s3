@@ -1,3 +1,5 @@
+// write a java program that shows thread synchronization & multithreading
+
 class Display
 {
 	synchronized void display(int n)
