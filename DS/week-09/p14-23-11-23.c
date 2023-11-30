@@ -59,6 +59,18 @@ void preorder(struct node *root)
 	preorder(root->right);
 }
 
+void postorder(struct node *root)
+{
+	if(root == NULL)
+	{
+		return;
+	}
+	
+	postorder(root->left);
+	postorder(root->right);
+	printf("%d\t", root->data);
+}
+
 void main()
 {
 	struct node *root = NULL;
@@ -71,6 +83,7 @@ void main()
 		printf("2. Deletion\n");
 		printf("3. Inorder traversal\n");
 		printf("4. Preorder traversal\n");
+		printf("5. Postorder traversal\n");
 		printf("Any other value to exit\n");
 		printf("Enter choice:\n");
 		scanf("%d", &ch);
@@ -92,6 +105,11 @@ void main()
 
 			case 4: printf("\n");
 				preorder(root);
+				printf("\n\n");				
+				break;
+			
+			case 5: printf("\n");
+				postorder(root);
 				printf("\n\n");				
 				break;
 
