@@ -17,7 +17,7 @@ void main()
 		scanf("%d", &a[i]);
 	}
 	
-	printf("\nMenu\n");
+	printf("Menu\n");
 	printf("1. Bubble sort\n");
 	printf("2. Insertion sort\n");
 	printf("3. Selection sort\n");
@@ -101,16 +101,6 @@ void main()
 	
 	else
 	{
-		printf("\nWrong choice\n");
-		return;
+		printf("Wrong choice\n");
 	}
-
-	printf("\nSorted array:\n");
-	
-	for(i = 0; i < n; i++)
-	{
-		printf("%d\t", a[i]);
-	}
-	
-	printf("\n");
 }
