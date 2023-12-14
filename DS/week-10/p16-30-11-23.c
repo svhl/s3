@@ -38,6 +38,13 @@ void main()
 					a[j+1] = k;
 				}
 			}
+			
+			for(j = 0; j < n; j++)
+			{
+				printf("%d\t", a[j]);
+			}
+			
+			printf("\n");
 		}
 	}
 	
@@ -55,6 +62,13 @@ void main()
 			}
 			
 			a[j+1] = k;
+			
+			for(j = 0; j < n; j++)
+			{
+				printf("%d\t", a[j]);
+			}
+			
+			printf("\n");
 		}
 	}
 	
@@ -75,6 +89,13 @@ void main()
 			k = a[l];
 			a[l] = a[i];
 			a[i] = k;
+			
+			for(j = 0; j < n; j++)
+			{
+				printf("%d\t", a[j]);
+			}
+			
+			printf("\n");
 		}
 	}
 	
