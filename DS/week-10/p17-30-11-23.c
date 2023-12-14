@@ -35,7 +35,7 @@ void merge(int a[], int l, int m, int r)
 			j++;
 		}
 		
-		k++;
+		k++;		
 	}
 	
 	while(i < n1)
@@ -57,14 +57,14 @@ void sort(int a[], int l, int r)
 {
 	if(l < r)
 	{
-		int m = (l + r) / 2;
+		int i, m = (l + r) / 2;
 		sort(a, l, m);
 		sort(a, m+1, r);
 		merge(a, l, m, r);
 		
-		for(int n = 0; n < r + 1; n++)
+		for(i = l; i <= r; i++)
 		{
-			printf("%d\t", a[n]);
+			printf("%d\t", a[i]);
 		}
 		
 		printf("\n");
