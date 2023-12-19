@@ -127,14 +127,9 @@ class Employee
 		System.out.println("\nEnter year:");
 		int year = sc.nextInt();
 		
-		qry = "select * from empdata where year<" + year;
-		rs = stm.executeQuery(qry);
-		System.out.println("\nEmployee details for those who joined before " + year + ":\n");
-
-		while(rs.next())
-		{
-			System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4) + "\t" + rs.getInt(5) + "\t" + rs.getInt(6));
-		}
+		qry = "delete from empdata where year<" + year;
+		stm.executeUpdate(qry);
+		System.out.println("\nDeleted employee details for those who joined before " + year);	
 
 		sc.close();
 		rs.close();
