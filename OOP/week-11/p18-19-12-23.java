@@ -10,6 +10,9 @@
 // use emp;
 // create table empdata(empid int, name varchar(50), des varchar(50), nat varchar(50), year int, sal int);
 // insert into empdata values ([enter_data_here]);
+// 
+// COMMAND TO RUN IN DIRECTORY CONTAINING PROGRAM
+// export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java-8.2.0.jar
 
 import java.sql.*;
 import java.util.*;
