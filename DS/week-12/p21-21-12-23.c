@@ -3,98 +3,116 @@
 // quadratic probing
 
 #include <stdio.h>
-#include <stdlib.h>
 
 int size;
-int *hashtable;
 
-void initialize()
+int hash(int key)
 {
-	hashtable = (int *)malloc(size * sizeof(int));
-
-	for(int i = 0; i < size; i++)
-	{
-		hashtable[i] = -1;
-	}
+	int i = key % size ;
+	return i;
 }
 
-int hashfn(int key)
+int linear(int key)
 {
-	return (key % size); 
+	int h = (key + 1) % size ;
+	return h ;
 }
 
-void linear(int key)
+int quadratic(int key, int i)
 {
-	int index = hashfn(key);
-
-	while(hashtable[index] != -1)
-	{
-		index = (index + 1) % size; 
-	}
-
-	hashtable[index] = key;
-}
-
-void quadratic(int key)
-{
-	int index = hashfn(key), i = 1;
-
-	while(hashtable[index] != -1)
-	{
-		index = (index + i * i) % size; 
-		i++;
-	}
-
-	hashtable[index] = key;
-}
-
-void display()
-{
-	printf("\nIndex\tKey\n");
-
-	for(int i = 0; i < size; i++)
-	{
-		printf("%d\t%d\n", i, hashtable[i]);
-	}
+	int h = (key + (i * i)) % size ;
+	return h ;
 }
 
 void main()
 {
-	printf("Enter size of hash table: ");
+	int key, a[50], table[50], i, n, ch, j, k;
+	printf ("Enter size of hash table:\n");
 	scanf("%d", &size);
-	initialize();
-	int ch, key;
-
+	printf ("Enter no. of elements:\n");
+	scanf("%d", &n);
+	
+	for(i = 0; i < size; i++)
+	{
+		table[i] = -1;
+	}
+	
+	for(i = 0; i < n; i++)
+	{
+		printf("Enter element %d:\n", i);
+		scanf("%d", &a[i]);
+	}
+	
 	while(1)
 	{
-		printf("\nMenu:\n");
+		printf("\nMenu\n");
 		printf("1. Linear probing\n");
 		printf("2. Quadratic probing\n");
-		printf("3. Display\n");
 		printf("Any other value to exit\n");
 		printf("Enter choice:\n");
 		scanf("%d", &ch);
-
-		switch(ch)
+		
+		if(ch==1)
 		{
-			case 1:
-				printf("\nEnter key:\n");
-				scanf("%d", &key);
-				linear(key);
-				break;
+			for(i = 0; i < size; i++)
+			{
+				table[i] = -1;
+			}
+			
+			for(k = 0; k < n; k++)
+			{
+				key = a[k];
+				i = hash(key);
 				
-			case 2:
-				printf("\nEnter key:\n");
-				scanf("%d", &key);
-				quadratic(key);
-				break;
+				while(table[i] != -1)
+				{
+					i = linear(i);
+				}
 				
-			case 3:
-				display();
-				break;
+				table[i] = key;
+			}
+			
+			for(i = 0; i < size; i++)
+			{
+				printf("\nElement at %d: %d", i, table[i]);
+			}
+			
+			printf("\n");
+		}
+		
+		else if(ch == 2)
+		{
+			for(i = 0; i < size; i++)
+			{
+				table[i] = -1;
+			}
+			
+			for(k = 0; k < n; k++)
+			{
+				j = 1;
+				key = a[k];
+				i = hash(key);
 				
-			default:
-					return;
+				while(table[i]!=-1)
+				{
+					i = quadratic(i, j);
+					j++;
+				}
+				
+				table[i]=key ;
+			}
+			
+			for(i = 0; i < size; i++)
+			{
+				printf("\nElement at %d: %d", i, table[i]);
+			}
+			
+			printf("\n");
+		}
+		
+		else
+		{
+			return;
 		}
 	}
 }
